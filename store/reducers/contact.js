@@ -15,6 +15,12 @@ export default (state = initialState, action) => {
                 for (let contact in action.contacts ) {
                     contact.favourite = false
                 } 
+
+                action.contacts.sort((a, b) => {
+                    if(a.displayName < b.displayName) { return -1; }
+                    if(a.displayName > b.displayName) { return 1; }
+                    return 0;
+                })
     
                 return {
                     ...state,
